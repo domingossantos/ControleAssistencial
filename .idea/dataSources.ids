@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - associacao@localhost" uuid="8e52b7c6-febe-4204-b952-0316278fcbad">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="PostgreSQL - controle_associacao@localhost" uuid="bc6c10a8-8232-4fd4-926a-a4c9361b5ca6">
+    <database-info product="PostgreSQL" version="9.4.4" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/>
+    <schema name="public" catalog="controle_associacao"/>
+    <table name="dependente" schema="public" catalog="controle_associacao" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnZGVwZW5kZW50ZV9pZF9zZXEnOjpyZWdjbGFzcyk=" autoIncrement="true"/>
+      <column name="nome" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="cpf" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="grau_parentesco_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="pessoa_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="dependente_pkey" columns="id"/>
+      <foreign-key name="fk_grau_parentesco" columns="grau_parentesco_id" ref-table="grau_parentesco" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="dependente_pessoa_id_fkey" columns="pessoa_id" ref-table="pessoa" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_dependente_pessoa" columns="pessoa_id" ref-table="pessoa" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="dependente_id_seq" schema="public" catalog="controle_associacao" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="escolaridade" schema="public" catalog="controle_associacao" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnZXNjb2xhcmlkYWRlX2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
+      <column name="descricao" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <primary-key name="escolaridade_pkey" columns="id"/>
+      <exported-key name="pessoa_escolaridade_id_fkey" table="pessoa" schema="public" catalog="controle_associacao" columns="escolaridade_id"/>
+    </table>
+    <table name="escolaridade_id_seq" schema="public" catalog="controle_associacao" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="evento" schema="public" catalog="controle_associacao" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnZXZlbnRvX2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
+      <column name="data_evento" sqlType="date" precision="13" scale="0" nullable="true" jdbcType="91"/>
+      <column name="hora_evento" sqlType="varchar" precision="6" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="duracao" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="observacao" sqlType="varchar" precision="250" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="tipo_evento_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="evento_pkey" columns="id"/>
+      <foreign-key name="evento_tipo_evento_id_fkey" columns="tipo_evento_id" ref-table="tipo_evento" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="tipo_evento_fk" columns="tipo_evento_id" ref-table="tipo_evento" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="evento_fk" table="evento_pessoa" schema="public" catalog="controle_associacao" columns="evento_id"/>
+    </table>
+    <table name="evento_id_seq" schema="public" catalog="controle_associacao" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="evento_pessoa" schema="public" catalog="controle_associacao" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnZXZlbnRvX3Blc3NvYV9pZF9zZXEnOjpyZWdjbGFzcyk=" autoIncrement="true"/>
+      <column name="pessoa_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="evento_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="data_inscricao" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="participacao" sqlType="bpchar" precision="1" scale="0" nullable="true" jdbcType="1" def="TlVMTA=="/>
+      <primary-key name="evento_pessoa_pkey" columns="id"/>
+      <foreign-key name="evento_fk" columns="evento_id" ref-table="evento" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="pessoa_fk" columns="pessoa_id" ref-table="pessoa" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="evento_pessoa_id_seq" schema="public" catalog="controle_associacao" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="grau_parentesco" schema="public" catalog="controle_associacao" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnZ3JhdV9wYXJlbnRlc2NvX2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
+      <column name="descricao" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <primary-key name="grau_parentesco_pkey" columns="id"/>
+      <exported-key name="fk_grau_parentesco" table="dependente" schema="public" catalog="controle_associacao" columns="grau_parentesco_id"/>
+    </table>
+    <table name="grau_parentesco_id_seq" schema="public" catalog="controle_associacao" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="pessoa" schema="public" catalog="controle_associacao" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgncGVzc29hX2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
+      <column name="nome" sqlType="varchar" precision="80" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="endereco" sqlType="varchar" precision="80" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="bairro" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="cidade" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="uf" sqlType="bpchar" precision="2" scale="0" nullable="true" jdbcType="1" def="TlVMTA=="/>
+      <column name="cep" sqlType="varchar" precision="10" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="identidade" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="emissor_rg" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="cpf" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="data_nascimento" sqlType="date" precision="13" scale="0" nullable="true" jdbcType="91"/>
+      <column name="nacionalidade" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="naturalidade" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="data_cadastro" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="escolaridade_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="pessoa_pkey" columns="id"/>
+      <foreign-key name="pessoa_escolaridade_id_fkey" columns="escolaridade_id" ref-table="escolaridade" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="dependente_pessoa_id_fkey" table="dependente" schema="public" catalog="controle_associacao" columns="pessoa_id"/>
+      <exported-key name="fk_dependente_pessoa" table="dependente" schema="public" catalog="controle_associacao" columns="pessoa_id"/>
+      <exported-key name="pessoa_fk" table="evento_pessoa" schema="public" catalog="controle_associacao" columns="pessoa_id"/>
+      <exported-key name="visita_pessoa_id_fkey" table="visita" schema="public" catalog="controle_associacao" columns="pessoa_id"/>
+    </table>
+    <table name="pessoa_id_seq" schema="public" catalog="controle_associacao" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="tipo_evento" schema="public" catalog="controle_associacao" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgndGlwb19ldmVudG9faWRfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
+      <column name="descricao" sqlType="varchar" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="tipo_evento_pkey" columns="id"/>
+      <exported-key name="evento_tipo_evento_id_fkey" table="evento" schema="public" catalog="controle_associacao" columns="tipo_evento_id"/>
+      <exported-key name="tipo_evento_fk" table="evento" schema="public" catalog="controle_associacao" columns="tipo_evento_id"/>
+    </table>
+    <table name="tipo_evento_id_seq" schema="public" catalog="controle_associacao" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="tipo_visita" schema="public" catalog="controle_associacao" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgndGlwb192aXNpdGFfaWRfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
+      <column name="descricao" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <primary-key name="tipo_visita_pkey" columns="id"/>
+      <exported-key name="visita_tipo_visita_id_fkey" table="visita" schema="public" catalog="controle_associacao" columns="tipo_visita_id"/>
+    </table>
+    <table name="tipo_visita_id_seq" schema="public" catalog="controle_associacao" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="usuario" schema="public" catalog="controle_associacao" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgndXN1YXJpb19pZF9zZXEnOjpyZWdjbGFzcyk=" autoIncrement="true"/>
+      <column name="login" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="nome" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="senha" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="status" sqlType="bpchar" precision="1" scale="0" nullable="true" jdbcType="1" def="TlVMTA=="/>
+      <primary-key name="usuario_pkey" columns="id"/>
+    </table>
+    <table name="usuario_id_seq" schema="public" catalog="controle_associacao" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="visita" schema="public" catalog="controle_associacao" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgndmlzaXRhX2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
+      <column name="data" sqlType="date" precision="13" scale="0" nullable="true" jdbcType="91"/>
+      <column name="relato" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pessoa_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="voluntario_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="tipo_visita_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="visita_pkey" columns="id"/>
+      <foreign-key name="visita_pessoa_id_fkey" columns="pessoa_id" ref-table="pessoa" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="visita_tipo_visita_id_fkey" columns="tipo_visita_id" ref-table="tipo_visita" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="visita_voluntario_id_fkey" columns="voluntario_id" ref-table="voluntario" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="visita_id_seq" schema="public" catalog="controle_associacao" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="voluntario" schema="public" catalog="controle_associacao" type="TABLE">
+      <column name="funcao" sqlType="varchar" precision="45" scale="0" nullable="true" jdbcType="12" def="TlVMTA=="/>
+      <column name="nome" sqlType="varchar" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="data_cadastro" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgndm9sdW50YXJpb19pZF9zZXEnOjpyZWdjbGFzcyk=" autoIncrement="true"/>
+      <primary-key name="voluntario_pkey" columns="id"/>
+      <exported-key name="visita_voluntario_id_fkey" table="visita" schema="public" catalog="controle_associacao" columns="voluntario_id"/>
+    </table>
+    <table name="voluntario_id_seq" schema="public" catalog="controle_associacao" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+  </data-source>
+</component>
