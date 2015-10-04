@@ -22,11 +22,8 @@
             </h:column>
             <h:column>
                 <f:facet name="header">#</f:facet>
-
-                    <h:commandButton  value="Editar" action="#{grauParentescoBean.grauPorId(grau.id)}"  >
-
-                    </h:commandButton>
-                <h:commandLink  value="Excluir" action="#{grauParentescoBean.grauPorId(grau.id)}"></h:commandLink>
+                    <h:commandButton  value="Editar" action="#{grauParentescoBean.grauPorId(grau.id)}" styleClass="btn btn-success" />
+                    <h:commandLink  value="Excluir" action="#{grauParentescoBean.grauPorId(grau.id)}" styleClass="btn btn-warning"/>
             </h:column>
         </h:dataTable>
 

@@ -9,13 +9,33 @@
 <ui:composition template="../WEB-INF/template.xhtml">
 
     <ui:define name="content">
-        <div class="form-group">
-            <label for="txDescricao">Descrição: </label>
-            <h:inputText id="txDescricao" value="#{grauParentescoBean.grauParentesco.descricao}"></h:inputText>
+        <div class="row">
+            <div class="col-md-4">Grau de Parentesco</div>
+            <div class="col-md-8"></div>
         </div>
-        <div class="form-group">
-            <h:commandButton action="#{grauParentescoBean.salva()}" value="Salvar"></h:commandButton>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="Descrição:" for="txDescricao"  />
+                        <h:inputText id="txDescricao" value="#{grauParentescoBean.grauParentesco.descricao}" styleClass="form-control"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <h:commandButton action="#{grauParentescoBean.salva()}" value="Salvar" styleClass="btn btn-info"></h:commandButton>
+                        <a href="grau.xhtml" class="btn btn-warning">Voltar</a>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+
+
+
     </ui:define>
 
 </ui:composition>

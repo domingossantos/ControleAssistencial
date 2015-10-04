@@ -1,7 +1,8 @@
 package br.com.acp.model;
 
 import javax.persistence.*;
-import java.util.Calendar;
+import java.util.Date;
+
 
 /**
  * Created by domingossantos on 10/09/15.
@@ -19,10 +20,10 @@ public class Pessoa {
     private String identidade;
     private String emissorRg;
     private String cpf;
-    private Calendar dataNascimento;
+    private Date dataNascimento;
     private String nacionalidade;
     private String naturalidade;
-    private Calendar dataCadastro;
+    private Date dataCadastro;
     private Escolaridade escolaridadeId;
 
     @Id
@@ -129,11 +130,11 @@ public class Pessoa {
     @Basic
     @Column(name = "data_nascimento")
     @Temporal(TemporalType.DATE)
-    public Calendar getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Calendar dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -160,11 +161,11 @@ public class Pessoa {
     @Basic
     @Column(name = "data_cadastro")
     @Temporal(TemporalType.TIMESTAMP)
-    public Calendar getDataCadastro() {
+    public Date getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(Calendar dataCadastro) {
+    public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 
