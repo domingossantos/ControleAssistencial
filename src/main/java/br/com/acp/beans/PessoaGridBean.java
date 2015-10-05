@@ -2,9 +2,13 @@ package br.com.acp.beans;
 
 import br.com.acp.model.Pessoa;
 import br.com.acp.services.PessoaSrv;
+import com.ocpsoft.pretty.faces.annotation.URLAction;
+import com.ocpsoft.pretty.faces.annotation.URLMapping;
+import com.ocpsoft.pretty.faces.annotation.URLMappings;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.List;
 
@@ -12,6 +16,9 @@ import java.util.List;
  * Created by domingossantos on 20/09/15.
  */
 @ManagedBean
+@ViewScoped
+@URLMappings(mappings = {
+        @URLMapping(id = "pessoagrid", pattern = "/pessoa/lista", viewId = "/pages/pessoa_grid.jsf")})
 public class PessoaGridBean {
 
     private Pessoa pessoa;
@@ -21,7 +28,7 @@ public class PessoaGridBean {
     @Inject
     private PessoaSrv pessoaSrv;
 
-    @PostConstruct
+    @URLAction(mappingId = "pessoagrid", onPostback = false)
     public void init(){
         pessoa = new Pessoa();
         pessoas = pessoaSrv.listarTodas();

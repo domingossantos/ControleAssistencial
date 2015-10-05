@@ -38,7 +38,8 @@ public abstract class DAO<T> implements DAOLocal<T> {
 	}
 
 	public List<T> listar(Class<T> clazz) throws AcessoDBError {
-		return em.createQuery("Select t from " + clazz.getSimpleName() + " t").getResultList();
+		List<T> resposta = em.createQuery("Select t from " + clazz.getSimpleName() + " t").getResultList();
+		return resposta;
 	}
 
 	public EntityManager getEm() {
