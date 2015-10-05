@@ -11,12 +11,36 @@
 
     <ui:define name="content">
         <h:form id="cadastroId">
-            <h:panelGrid columns="2">
-                <p:fieldset legend="Cadastrar Tipo de Evento">
-                <p:outputLabel value="Descrição:"/>
-                <p:inputText id="descricaoId"/>
+            <p:fieldset legend="Cadastrar Tipo de Evento">
+            <p:fieldset>
+                <p:outputLabel value="Descrição: "/>
+                <h:panelGrid columns="2">
+                <p:inputText id="descricaoId" style="width: 150%" value="#{tipoEventoBean.tipoEvento.descricao}"/>
+                <p:commandButton value="Salvar" style="margin-left: 58%" styleClass="ui-priority-primary"
+                                 action="#{tipoEventoBean.salvar()}"
+                                 update="tblTpEvento"/>
+                </h:panelGrid>
                 </p:fieldset>
-            </h:panelGrid>
+            </p:fieldset>
+            <p:dataTable id="tblTpEvento" value="#{tipoEventoBean.lista}" var="tpevento" emptyMessage="Nenhum Registro Encontrado" >
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputText value="Descrição" />
+                    </f:facet>
+                    <h:outputText value="#{tpevento.descricao}"/>
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Opções" />
+                    </f:facet>
+
+                    <p:commandLink value="Editar" />
+                    &nbsp;&nbsp;
+                    <p:commandLink value="Excluir" />
+                </p:column>
+
+            </p:dataTable>
         </h:form>
     </ui:define>
 

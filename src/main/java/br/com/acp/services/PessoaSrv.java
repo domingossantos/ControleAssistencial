@@ -40,12 +40,12 @@ public class PessoaSrv  {
     }
 
 
-    public Object getPorId() {
+    public List<Object> listarTodos() {
         return null;
     }
 
 
-    public List<Object> listarTodos() {
+    public Object getPorId() {
         return null;
     }
 
