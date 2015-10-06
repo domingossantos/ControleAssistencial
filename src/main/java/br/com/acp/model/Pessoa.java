@@ -169,7 +169,7 @@ public class Pessoa {
         this.dataCadastro = dataCadastro;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "escolaridade_id")
     public Escolaridade getEscolaridadeId() {
         return escolaridadeId;

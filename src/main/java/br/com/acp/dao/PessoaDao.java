@@ -7,4 +7,9 @@ import br.com.acp.model.Pessoa;
  * Created by domingossantos on 10/09/15.
  */
 public class PessoaDao extends DAO<Pessoa> {
+
+
 }
+
+
+
