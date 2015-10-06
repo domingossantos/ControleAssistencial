@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../../WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+
+            <p:fieldset id="field1" legend="Cadastrar Evento">
+            <p:fieldset id="field2">
+                <p:outputLabel value="Descrição: "/>
+                <h:panelGrid columns="2">
+                <p:inputText id="descricaoId" style="width: 150%" />
+                <p:commandButton value="Salvar" style="margin-left: 58%" styleClass="ui-priority-primary"
+                                 />
+                </h:panelGrid>
+                </p:fieldset>
+            </p:fieldset>
+
+    </ui:define>
+
+</ui:composition>
+</html>

@@ -20,7 +20,7 @@ public class TipoEventoSrv {
         return dao.listar(TipoEvento.class);
     }
 
-    public TipoEvento getPorId(Long id) {
+    public TipoEvento getPorId(Integer id) {
         return dao.getUm(id, TipoEvento.class);
     }
 
@@ -32,7 +32,7 @@ public class TipoEventoSrv {
         }
     }
 
-    public void excluir(Long id) {
+    public void excluir(Integer id) {
         dao.remover(id,TipoEvento.class);
     }
 

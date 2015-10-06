@@ -12,7 +12,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
 <f:view contentType="text/html">
 
@@ -26,6 +27,7 @@
     </h:head>
 
     <h:body>
+
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -34,6 +36,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><h:link outcome="pretty:pessoagrid" value="Cadastro de Pessoas"/></li>
+                        <li><h:link outcome="pretty:eventoid" value="Cadastro de Eventos"/></li>
                         <li><h:link outcome="pretty:pessoagrid" value="Visitas"/></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros <span class="caret"></span></a>
@@ -56,6 +59,9 @@
         <div class="container">
             <div class="starter-template">
                 <h:form id="formContent" styleClass="form-horizontal" >
+                    <p:messages id="msg" autoUpdate="true"
+                                severity="warn,info" showDetail="true" showSummary="false" >
+                    </p:messages>
                     <ui:insert name="content"></ui:insert>
                 </h:form>
             </div>
