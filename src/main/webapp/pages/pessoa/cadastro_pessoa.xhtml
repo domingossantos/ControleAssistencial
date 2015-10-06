@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"  >
+
+<ui:composition template="../../WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <div class="row">
+            <div class="col-md-4">Cadastro Pessoa</div>
+            <div class="col-md-8"><h:messages styleClass="alert-info" /></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="Nome:" for="txNome"  />
+                        <p:inputText id="txNome" value="#{pessoalFormBean.pessoa.nome}" styleClass="form-control" required="true" requiredMessage="Campo Nome obrigatório"/>
+                        <h:message for="txNome" styleClass="alert-warning"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="Endereço:" for="txEndereco"  />
+                        <h:inputText id="txEndereco" value="#{pessoalFormBean.pessoa.endereco}" styleClass="form-control" required="true" requiredMessage="Campo obrigatório"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="Bairro:" for="txBairro"  />
+                        <h:inputText id="txBairro" value="#{pessoalFormBean.pessoa.bairro}" styleClass="form-control" required="true" requiredMessage="Campo obrigatório"/>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="Cidade:" for="txCidade"  />
+                        <h:inputText id="txCidade" value="#{pessoalFormBean.pessoa.cidade}" styleClass="form-control" required="true" requiredMessage="Campo obrigatório"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="UF:" for="txUF"  />
+                        <h:inputText id="txUF" value="#{pessoalFormBean.pessoa.uf}" styleClass="form-control" required="true" requiredMessage="Campo obrigatório"/>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="CEP:" for="txCep"  />
+                        <h:inputText id="txCep" value="#{pessoalFormBean.pessoa.cep}" styleClass="form-control" required="true" requiredMessage="Campo obrigatório"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="Identidade:" for="txIdentidade"  />
+                        <h:inputText id="txIdentidade" value="#{pessoalFormBean.pessoa.identidade}" styleClass="form-control" required="true" requiredMessage="Campo obrigatório"/>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="Orgão Emissor:" for="txEmissor"  />
+                        <h:inputText id="txEmissor" value="#{pessoalFormBean.pessoa.emissorRg}" styleClass="form-control" required="true" requiredMessage="Campo obrigatório"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="CPF:" for="txCpf"  />
+                        <h:inputText id="txCpf" value="#{pessoalFormBean.pessoa.cpf}" styleClass="form-control" required="true" requiredMessage="Campo obrigatório"/>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="Data Nasc.:" for="txNasc"  />
+                        <p:inputMask id="txNasc" value="#{pessoalFormBean.pessoa.dataNascimento}"  styleClass="form-control"  mask="99/99/9999">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </p:inputMask>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="Nacionalidade:" for="txNacionalidade"  />
+                        <h:inputText id="txNacionalidade" value="#{pessoalFormBean.pessoa.nacionalidade}" styleClass="form-control"/>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="Naturalidade:" for="txNaturalidade"  />
+                        <h:inputText id="txNaturalidade" value="#{pessoalFormBean.pessoa.naturalidade}" styleClass="form-control"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <h:outputLabel value="Escolaridade:" for="txEscolaridade"  />
+                        <h:selectOneMenu styleClass="form-control" value="#{pessoalFormBean.pessoa.escolaridadeId}" id="txEscolaridade" converter="objConverter">
+                            <f:selectItems value="#{pessoalFormBean.escolaridadeList}" var="escola" itemValue="#{escola}" itemLabel="#{escola.descricao}"/>
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                    <h:commandButton value="Salvar" action="#{pessoalFormBean.salvar}" styleClass="btn btn-success" />
+                    <h:link outcome="pretty:pessoaGrid" value="Voltar" styleClass="btn btn-warning"/>
+                </div>
+            </div>
+
+
+        </div>
+    </ui:define>
+
+</ui:composition>
+</html>

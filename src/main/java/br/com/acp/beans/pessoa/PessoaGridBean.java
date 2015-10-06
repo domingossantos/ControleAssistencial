@@ -1,4 +1,4 @@
-package br.com.acp.beans;
+package br.com.acp.beans.pessoa;
 
 import br.com.acp.model.Pessoa;
 import br.com.acp.services.PessoaSrv;
@@ -18,7 +18,8 @@ import java.util.List;
 @ManagedBean
 @ViewScoped
 @URLMappings(mappings = {
-        @URLMapping(id = "pessoagrid", pattern = "/pessoa/lista", viewId = "/pages/pessoa_grid.jsf")})
+        @URLMapping(id = "pessoaGrid", pattern = "/pessoa/lista", viewId = "/pages/pessoa/pessoa_grid.jsf")
+})
 public class PessoaGridBean {
 
     private Pessoa pessoa;
@@ -28,7 +29,7 @@ public class PessoaGridBean {
     @Inject
     private PessoaSrv pessoaSrv;
 
-    @URLAction(mappingId = "pessoagrid", onPostback = false)
+    @URLAction(mappingId = "pessoaGrid", onPostback = false)
     public void init(){
         pessoa = new Pessoa();
         pessoas = pessoaSrv.listarTodas();

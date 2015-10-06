@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+        >
+
+<ui:composition template="../../WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+
+        <div class="row">
+            <div class="col-md-4">Dependentes de <h:outputText value="#{dependenteGridBean.pessoa.nome}"/> </div>
+            <div class="col-md-8">
+                <h:link outcome="pretty:dependenteNovo" value="Novo Registro" styleClass="btn btn-success">
+                    <f:param name="pessoaId" value="#{dependenteGridBean.pessoa.id}"/>
+                </h:link>
+                &nbsp;
+                <h:link outcome="pretty:pessoaGrid" value="Voltar" styleClass="btn btn-default"/>
+            </div>
+        </div>
+        <div>
+            <h:dataTable value="#{dependenteGridBean.dependentes}" var="dependente" styleClass="table table-striped">
+                <h:column>
+                    <f:facet name="header">Nome</f:facet>
+                    #{dependente.dependente.nome}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Data Nasc</f:facet>
+                    <h:outputText value="#{dependente.dependente.dataNascimento}">
+                        <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"   />
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Grau Parentesto</f:facet>
+                    #{dependente.grauParentescoId.descricao}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">#</f:facet>
+                    <h:link outcome="pretty:pessoaEditar" value="Editar" styleClass="btn btn-link">
+                        <f:param name="id" value="#{dependente.id}"/>
+                    </h:link>
+                </h:column>
+
+            </h:dataTable>
+        </div>
+    </ui:define>
+
+</ui:composition>
+</html>

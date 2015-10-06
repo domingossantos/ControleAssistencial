@@ -34,7 +34,7 @@ public class Dependente {
         this.grauParentescoId = grauParentescoId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dependente_id")
     public Pessoa getDependente() {
         return dependente;
@@ -44,7 +44,7 @@ public class Dependente {
         this.dependente = dependente;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "responsavel_id")
     public Pessoa getResponsavel() {
         return responsavel;

@@ -43,8 +43,8 @@ public class PaginaBean implements Serializable {
 	public void addInfo(String mensagem) {
 		FacesContext.getCurrentInstance().addMessage(
 				null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação",
-						mensagem));
+				new FacesMessage(FacesMessage.SEVERITY_INFO, mensagem,
+						"Informação"));
 	}
 
 	/**
@@ -55,8 +55,8 @@ public class PaginaBean implements Serializable {
 	public void addWarn(String mensagem) {
 		FacesContext.getCurrentInstance().addMessage(
 				null,
-				new FacesMessage(FacesMessage.SEVERITY_WARN, "Atenção",
-						mensagem));
+				new FacesMessage(FacesMessage.SEVERITY_WARN, mensagem,
+						"Atenção"));
 	}
 
 	/**

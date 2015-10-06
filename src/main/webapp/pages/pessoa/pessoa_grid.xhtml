@@ -7,12 +7,13 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
         >
 
-<ui:composition template="../WEB-INF/template.xhtml">
+<ui:composition template="../../WEB-INF/template.xhtml">
 
     <ui:define name="content">
+
         <div class="row">
             <div class="col-md-4">Cadastro de Pessoas</div>
-            <div class="col-md-8"><a href="cadastro_pessoa.xhtml" class="btn btn-default">Nova Pessoa</a></div>
+            <div class="col-md-8"><h:link outcome="pretty:pessoaNova" value="Novo Registro" styleClass="btn btn-success"/></div>
         </div>
         <div>
             <h:dataTable value="#{pessoaGridBean.pessoas}" var="pessoa" styleClass="table table-striped">
@@ -34,9 +35,14 @@
 
                 <h:column>
                     <f:facet name="header">#</f:facet>
-                    <h:outputText value="Ações"/>
+                    <h:link outcome="pretty:pessoaEditar" value="Editar" styleClass="btn btn-default">
+                        <f:param name="id" value="#{pessoa.id}"/>
+                    </h:link>
+                    &nbsp;
+                    <h:link outcome="pretty:dependenteGrid" value="Dependentes" styleClass="btn btn-default">
+                        <f:param name="pessoaId" value="#{pessoa.id}"/>
+                    </h:link>
                 </h:column>
-
             </h:dataTable>
         </div>
     </ui:define>
