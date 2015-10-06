@@ -1,8 +1,8 @@
 package br.com.acp.model;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.util.Calendar;
+import java.util.Date;
+
 
 /**
  * Created by domingossantos on 10/09/15.
@@ -11,7 +11,7 @@ import java.util.Calendar;
 @SequenceGenerator(name = "evento_id_seq", sequenceName = "evento_id_seq", initialValue = 1, allocationSize = 1)
 public class Evento {
     private Integer id;
-    private Calendar dataEvento;
+    private Date dataEvento;
     private String horaEvento;
     private String duracao;
     private String observacao;
@@ -31,11 +31,11 @@ public class Evento {
     @Basic
     @Column(name = "data_evento")
     @Temporal(TemporalType.DATE)
-    public Calendar getDataEvento() {
+    public Date getDataEvento() {
         return dataEvento;
     }
 
-    public void setDataEvento(Calendar dataEvento) {
+    public void setDataEvento(Date dataEvento) {
         this.dataEvento = dataEvento;
     }
 

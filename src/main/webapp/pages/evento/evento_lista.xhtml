@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../../WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+
+        <p:fieldset id="field1" legend="Lista de Eventos">
+
+        <p:dataTable id="tblEvento" value="#{listaEventoBean.eventos}" var="evento" emptyMessage="Nenhum Registro Encontrado" >
+            <p:column >
+                <f:facet name="header">
+                    <h:outputText value="Data" />
+                </f:facet>
+                <h:outputText value="#{evento.dataEvento}">
+                    <!--<f:convertDateTime pattern="dd/MM/yyyy" />-->
+                </h:outputText>
+            </p:column>
+
+            <p:column >
+                <f:facet name="header">
+                    <h:outputText value="Hora" />
+                </f:facet>
+                <h:outputText value="#{evento.horaEvento}">
+                    <f:convertDateTime pattern="HH:mm" />
+                </h:outputText>
+            </p:column>
+
+            <p:column >
+                <f:facet name="header">
+                    <h:outputText value="Duração" />
+                </f:facet>
+                <h:outputText value="#{evento.duracao}">
+                    <f:convertDateTime pattern="HH:mm" />
+                </h:outputText>
+            </p:column>
+
+            <p:column >
+                <f:facet name="header">
+                    <h:outputText value="Tipo de evento" />
+                </f:facet>
+                <h:outputText value="#{evento.tipoEventoId.descricao}"/>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Opções" />
+                </f:facet>
+
+                <h:link outcome="pretty:editarEvento" value="Editar">
+                    <f:param name="id" value="#{evento.id}"/>
+                </h:link>
+
+                &nbsp;&nbsp;
+                <p:commandLink value="Excluir" action="#{listaEventoBean.excluir(evento)}" update=":formContent tblEvento"
+                               onclick="if (!confirm(' deseja mesmo excluir? '))
+                                             return false;" />
+            </p:column>
+
+        </p:dataTable>
+        </p:fieldset>
+    </ui:define>
+
+</ui:composition>
+</html>

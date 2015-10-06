@@ -4,24 +4,12 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <jta-data-source>java:jboss/datasources/assistenciaDS</jta-data-source>
 
-        <class>br.com.acp.model.Dependente</class>
-        <class>br.com.acp.model.Escolaridade</class>
-        <class>br.com.acp.model.Evento</class>
-        <class>br.com.acp.model.EventoPessoa</class>
-        <class>br.com.acp.model.GrauParentesco</class>
-        <class>br.com.acp.model.Pessoa</class>
-        <class>br.com.acp.model.TipoEvento</class>
-        <class>br.com.acp.model.TipoVisita</class>
-        <class>br.com.acp.model.Usuario</class>
-        <class>br.com.acp.model.Visita</class>
-        <class>br.com.acp.model.Voluntario</class>
-
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="hibernate.show_sql" value="false" />
             <property name="hibernate.format_sql" value="true" />
-            <property name="hbm2ddl.auto" value="update"/>
+            <property name="hbm2ddl.auto" value="create"/>
         </properties>
     </persistence-unit>
 

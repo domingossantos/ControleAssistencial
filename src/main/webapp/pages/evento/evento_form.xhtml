@@ -13,13 +13,80 @@
 
             <p:fieldset id="field1" legend="Cadastrar Evento">
             <p:fieldset id="field2">
-                <p:outputLabel value="Descrição: "/>
                 <h:panelGrid columns="2">
-                <p:inputText id="descricaoId" style="width: 150%" />
-                <p:commandButton value="Salvar" style="margin-left: 58%" styleClass="ui-priority-primary"
-                                 />
+                    <p:outputLabel for="dataInicial" value="Data do Evento: " />
+                    <h:panelGrid style="margin-bottom: 5%">
+                        <p:calendar id="dataInicial"
+                                    value="#{eventoBean.evento.dataEvento}"
+                                    locale="pt"
+                                    showButtonPanel="true"
+                                    navigator="true"
+                                    yearRange="c-64:c+36"
+                                    required="true"
+                                    requiredMessage="Campo Obrigatório"
+                                />
+                    </h:panelGrid>
+
+                    <p:outputLabel for="horaEvento" value="Hora do Evento: " />
+                    <h:panelGrid style="margin-bottom: 5%">
+                        <p:calendar id="horaEvento"
+                                    value="#{eventoBean.evento.horaEvento}"
+                                    pattern="HH:mm"
+                                    timeOnly="true"
+                                    locale="pt"
+                                    required="true"
+                                    requiredMessage="Campo Obrigatório"
+                                />
+                    </h:panelGrid>
+
+                    <p:outputLabel for="duracao" value="Duração: " />
+                    <h:panelGrid style="margin-bottom: 5%">
+                        <p:calendar
+                                id="duracao"
+                                value="#{eventoBean.evento.duracao}"
+                                pattern="HH:mm"
+                                timeOnly="true"
+                                locale="pt"
+                                required="true"
+                                requiredMessage="Campo Obrigatório"
+                                />
+                    </h:panelGrid>
+                    <p:outputLabel for="obs" value="Observação: " />
+                    <h:panelGrid style="margin-bottom: 5%">
+                        <p:inputTextarea rows="3"
+                                         cols="30"
+                                         counterTemplate="{0} caractere(s)."
+                                         required="false"
+                                         id="obs"
+                                         value="#{eventoBean.evento.observacao}"
+                                         autoResize="false"
+                                         maxlength="500"
+                                         style="width: 97%"
+                                         />
+
+                    </h:panelGrid>
+
+                    <p:outputLabel for="obs" value="Tipo de evento: " />
+                    <h:panelGrid style="margin-bottom: 5%">
+                    <p:selectOneMenu id="comboTpEvento"
+                                     value="#{eventoBean.evento.tipoEventoId}"
+                                     converter="objConverter"
+                                     required="true"
+                                     requiredMessage="Campo Obrigatório">
+                        <f:selectItem itemLabel="SELECIONE" itemValue=""/>
+                        <f:selectItems
+                                var="tipoEvento"
+                                value="#{eventoBean.tiposDeEvento}"
+                                itemLabel="#{tipoEvento.descricao}"
+                                itemValue="#{tipoEvento}" />
+                    </p:selectOneMenu>
+
+                    </h:panelGrid>
+
+
                 </h:panelGrid>
-                </p:fieldset>
+                <p:commandButton value="Salvar" styleClass="ui-priority-primary" ajax="false" action="#{eventoBean.salvar()}"/>
+            </p:fieldset>
             </p:fieldset>
 
     </ui:define>
