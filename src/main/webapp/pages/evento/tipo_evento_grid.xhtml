@@ -10,18 +10,20 @@
 <ui:composition template="../../WEB-INF/template.xhtml">
 
     <ui:define name="content">
-        <h:form id="cadastroId">
-            <p:fieldset legend="Cadastrar Tipo de Evento">
-            <p:fieldset>
+
+            <p:fieldset id="field1" legend="Tipo de Evento">
+            <p:fieldset id="field2">
                 <p:outputLabel value="Descrição: "/>
                 <h:panelGrid columns="2">
                 <p:inputText id="descricaoId" style="width: 150%" value="#{tipoEventoBean.tipoEvento.descricao}"/>
                 <p:commandButton value="Salvar" style="margin-left: 58%" styleClass="ui-priority-primary"
-                                 action="#{tipoEventoBean.salvar()}"
-                                 update="tblTpEvento"/>
+                                 actionListener="#{tipoEventoBean.salvar()}"
+                                 update="tblTpEvento field2"
+                                 />
                 </h:panelGrid>
                 </p:fieldset>
             </p:fieldset>
+
             <p:dataTable id="tblTpEvento" value="#{tipoEventoBean.lista}" var="tpevento" emptyMessage="Nenhum Registro Encontrado" >
                 <p:column >
                     <f:facet name="header">
@@ -35,13 +37,15 @@
                         <h:outputText value="Opções" />
                     </f:facet>
 
-                    <p:commandLink value="Editar" />
+                    <p:commandLink value="Editar" ajax="false" action="#{tipoEventoBean.editar(tpevento)}" update=":formContent tblTpEvento"/>
                     &nbsp;&nbsp;
-                    <p:commandLink value="Excluir" />
+                    <p:commandLink value="Excluir" action="#{tipoEventoBean.excluir(tpevento)}" update=":formContent tblTpEvento"
+                                   onclick="if (!confirm(' deseja mesmo excluir? '))
+                                             return false;" />
                 </p:column>
 
             </p:dataTable>
-        </h:form>
+
     </ui:define>
 
 </ui:composition>
