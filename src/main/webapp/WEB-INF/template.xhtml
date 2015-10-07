@@ -16,10 +16,12 @@
       xmlns:p="http://primefaces.org/ui">
 
 <f:view contentType="text/html">
-
-    <p:growl/>
-
     <h:head>
+        <p:growl/>
+        <p:messages id="msg" autoUpdate="true"
+                    severity="warn,info" showDetail="true" showSummary="false" >
+        </p:messages>
+
         <title>Controle Assistencial</title>
 
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
@@ -36,7 +38,6 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><h:link outcome="pretty:pessoagrid" value="Cadastro de Pessoas"/></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Eventos <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -44,9 +45,7 @@
                                 <li><h:link outcome="pretty:listaeventoid" value="Lista de Eventos"/></li>
                             </ul>
                         </li>
-                        <li><h:link outcome="pretty:pessoagrid" value="Visitas"/></li>
                         <li><h:link outcome="pretty:pessoaGrid" value="Cadastro de Pessoas"/></li>
-                        <li><h:link outcome="pretty:eventoid" value="Cadastro de Eventos"/></li>
                         <li><h:link outcome="pretty:pessoaGrid" value="Visitas"/></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros <span class="caret"></span></a>

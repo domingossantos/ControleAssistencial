@@ -39,7 +39,7 @@
 
                     <p:commandLink value="Editar" ajax="false" action="#{tipoEventoBean.editar(tpevento)}" update=":formContent tblTpEvento"/>
                     &nbsp;&nbsp;
-                    <p:commandLink value="Excluir" action="#{tipoEventoBean.excluir(tpevento)}" update=":formContent tblTpEvento"
+                    <p:commandLink value="Excluir" action="#{tipoEventoBean.excluir(tpevento)}" update=":formContent tblTpEvento :msg"
                                    onclick="if (!confirm(' deseja mesmo excluir? '))
                                              return false;" />
                 </p:column>

@@ -13,6 +13,8 @@ import com.ocpsoft.pretty.faces.annotation.URLMappings;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +37,8 @@ public class EventoBean extends PaginaBean {
         private Evento evento;
         private Integer id;
         private List<TipoEvento> tiposDeEvento = new ArrayList<>();
+        private DateFormat formatData = new SimpleDateFormat("dd/MM/yyyy");
+        private DateFormat formatHora = new SimpleDateFormat("HH:mm");
 
 @URLActions(actions = {
         @URLAction(mappingId = "eventoid", onPostback = false),
