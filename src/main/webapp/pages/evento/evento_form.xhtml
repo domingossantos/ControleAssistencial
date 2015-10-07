@@ -30,7 +30,7 @@
                     <p:outputLabel for="horaEvento" value="Hora do Evento: " />
                     <h:panelGrid style="margin-bottom: 5%">
                         <p:calendar id="horaEvento"
-                                    value="#{eventoBean.evento.horaEvento}"
+                                    value="#{eventoBean.horaEvento}"
                                     pattern="HH:mm"
                                     timeOnly="true"
                                     locale="pt"
@@ -43,7 +43,7 @@
                     <h:panelGrid style="margin-bottom: 5%">
                         <p:calendar
                                 id="duracao"
-                                value="#{eventoBean.evento.duracao}"
+                                value="#{eventoBean.duracaoEvento}"
                                 pattern="HH:mm"
                                 timeOnly="true"
                                 locale="pt"
@@ -62,6 +62,7 @@
                                          autoResize="false"
                                          maxlength="500"
                                          style="width: 97%"
+                                         styleClass="no-resize"
                                          />
 
                     </h:panelGrid>
@@ -85,7 +86,7 @@
 
 
                 </h:panelGrid>
-                <p:commandButton value="Salvar" styleClass="ui-priority-primary" ajax="false" action="#{eventoBean.salvar()}"/>
+                <p:commandButton value="Salvar"  ajax="false" action="#{eventoBean.salvar()}"/>
             </p:fieldset>
             </p:fieldset>
 

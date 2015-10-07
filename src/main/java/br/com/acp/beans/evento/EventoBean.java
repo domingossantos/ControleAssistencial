@@ -16,6 +16,7 @@ import javax.inject.Inject;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,15 +38,21 @@ public class EventoBean extends PaginaBean {
         private Evento evento;
         private Integer id;
         private List<TipoEvento> tiposDeEvento = new ArrayList<>();
-        private DateFormat formatData = new SimpleDateFormat("dd/MM/yyyy");
+        private Date horaEvento;
+        private Date duracaoEvento;
         private DateFormat formatHora = new SimpleDateFormat("HH:mm");
-
-@URLActions(actions = {
-        @URLAction(mappingId = "eventoid", onPostback = false),
-        @URLAction(mappingId = "editarEvento", onPostback = false) })
+        @URLActions(actions = {
+                @URLAction(mappingId = "eventoid", onPostback = false),
+                @URLAction(mappingId = "editarEvento", onPostback = false) })
         public void abrir(){
                 if (id != null) {
-                        evento = eventoSrv.getPorId(id);
+                        try{
+                                evento = eventoSrv.getPorId(id);
+                                horaEvento = formatHora.parse(evento.getHoraEvento());
+                                duracaoEvento = formatHora.parse(evento.getDuracao());
+                        }catch (Exception e){
+                                e.printStackTrace();
+                        }
                 }else{
                         evento = new Evento();
                 }
@@ -53,9 +60,13 @@ public class EventoBean extends PaginaBean {
         }
 
         public String salvar(){
-            eventoSrv.salvar(evento);
-            addInfo("Cadastro Realizado com Sucesso!");
-            return "pretty:listaeventoid";
+                String horaEvento = formatHora.format(getHoraEvento());
+                String duracaooEvento = formatHora.format(getDuracaoEvento());
+                evento.setHoraEvento(horaEvento);
+                evento.setDuracao(duracaooEvento);
+                eventoSrv.salvar(evento);
+                addInfo("Cadastro Realizado com Sucesso!");
+                return "pretty:listaeventoid";
         }
 
         public Evento getEvento() {
@@ -80,5 +91,21 @@ public class EventoBean extends PaginaBean {
 
         public void setTiposDeEvento(List<TipoEvento> tiposDeEvento) {
                 this.tiposDeEvento = tiposDeEvento;
+        }
+
+        public Date getHoraEvento() {
+                return horaEvento;
+        }
+
+        public void setHoraEvento(Date horaEvento) {
+                this.horaEvento = horaEvento;
+        }
+
+        public Date getDuracaoEvento() {
+                return duracaoEvento;
+        }
+
+        public void setDuracaoEvento(Date duracaoEvento) {
+                this.duracaoEvento = duracaoEvento;
         }
 }
