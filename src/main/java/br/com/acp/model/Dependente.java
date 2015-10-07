@@ -24,7 +24,7 @@ public class Dependente {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "grau_parentesco_id")
     public GrauParentesco getGrauParentescoId() {
         return grauParentescoId;
@@ -34,7 +34,7 @@ public class Dependente {
         this.grauParentescoId = grauParentescoId;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "dependente_id")
     public Pessoa getDependente() {
         return dependente;
@@ -44,7 +44,7 @@ public class Dependente {
         this.dependente = dependente;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "responsavel_id")
     public Pessoa getResponsavel() {
         return responsavel;

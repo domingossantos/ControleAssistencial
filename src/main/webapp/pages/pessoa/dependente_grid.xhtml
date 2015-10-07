@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
         >
 
 <ui:composition template="../../WEB-INF/template.xhtml">
@@ -22,31 +22,31 @@
             </div>
         </div>
         <div>
-            <h:dataTable value="#{dependenteGridBean.dependentes}" var="dependente" styleClass="table table-striped">
-                <h:column>
+            <p:dataTable value="#{dependenteGridBean.dependentes}" var="dependente" styleClass="table table-striped" emptyMessage="Nenhum Registro Encontrado">
+                <p:column>
                     <f:facet name="header">Nome</f:facet>
-                    #{dependente.dependente.nome}
-                </h:column>
+                    <h:outputText value="#{dependente.dependente.nome}" />
+                </p:column>
 
-                <h:column>
+                <p:column>
                     <f:facet name="header">Data Nasc</f:facet>
                     <h:outputText value="#{dependente.dependente.dataNascimento}">
                         <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"   />
                     </h:outputText>
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column>
                     <f:facet name="header">Grau Parentesto</f:facet>
-                    #{dependente.grauParentescoId.descricao}
-                </h:column>
+                    <h:outputText value="#{dependente.grauParentescoId.descricao}" />
+                </p:column>
 
-                <h:column>
+                <p:column>
                     <f:facet name="header">#</f:facet>
                     <h:link outcome="pretty:pessoaEditar" value="Editar" styleClass="btn btn-link">
                         <f:param name="id" value="#{dependente.id}"/>
                     </h:link>
-                </h:column>
+                </p:column>
 
-            </h:dataTable>
+            </p:dataTable>
         </div>
     </ui:define>
 

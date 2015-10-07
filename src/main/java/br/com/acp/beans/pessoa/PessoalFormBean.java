@@ -44,13 +44,17 @@ public class PessoalFormBean extends PaginaBean {
             }
     )
     public void init(){
-        if(id == null) {
-            this.pessoa = new Pessoa();
-        } else {
-            pessoa = pessoaSrv.getPorId(id);
+        try {
+            if (id == null) {
+                this.pessoa = new Pessoa();
+            } else {
+                pessoa = pessoaSrv.getPorId(id);
+                pessoa.getEscolaridadeId();
+            }
+            this.escolaridadeList = pessoaSrv.listaEscolaridade();
+        } catch (Exception ex){
+            addWarn(ex.getMessage());
         }
-        this.escolaridadeList = pessoaSrv.listaEscolaridade();
-
     }
 
 

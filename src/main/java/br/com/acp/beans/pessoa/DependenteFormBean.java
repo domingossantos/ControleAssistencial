@@ -42,12 +42,16 @@ public class DependenteFormBean extends PaginaBean{
 
     @URLAction(mappingId = "dependenteNovo", onPostback = false)
     public void init(){
-        if(id == null){
-            dependente =  new Pessoa();
-            dependencia = new Dependente();
-            dependencia.setResponsavel(pessoaSrv.getPorId(pessoaId));
-            grauParentescoList = pessoaSrv.listaGrauParentesco();
-            escolaridadeList = pessoaSrv.listaEscolaridade();
+        try {
+            if (id == null) {
+                dependente = new Pessoa();
+                dependencia = new Dependente();
+                dependencia.setResponsavel(pessoaSrv.getPorId(pessoaId));
+                grauParentescoList = pessoaSrv.listaGrauParentesco();
+                escolaridadeList = pessoaSrv.listaEscolaridade();
+            }
+        } catch (Exception ex){
+            addWarn(ex.getMessage());
         }
     }
 

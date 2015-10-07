@@ -14,7 +14,13 @@ import java.util.List;
 public class DependenteDao extends DAO<Dependente> {
 
     public List<Dependente> listaPorPessoa(Pessoa pessoa){
-        Query query = getEm().createQuery("select d from Dependente d where d.responsavel = :pessoa");
+        Query query = getEm().createQuery("select d from Dependente d " +
+                "join d.responsavel Pessoa " +
+                "join d.dependente Pessoa " +
+                "join d.responsavel.escolaridadeId Escolaridade  " +
+                "join d.dependente.escolaridadeId  Escolaridade " +
+                "join d.grauParentescoId GrauParentesco " +
+                "where d.responsavel = :pessoa");
         query.setParameter("pessoa", pessoa);
         return query.getResultList();
     }

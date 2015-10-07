@@ -34,7 +34,7 @@ public class PessoaSrv  {
 
 
     public List<Pessoa> listarTodas(){
-        return pessoaDao.listar(Pessoa.class);
+        return pessoaDao.listaTodos();
     }
 
     public List<Escolaridade> listaEscolaridade(){
@@ -51,8 +51,8 @@ public class PessoaSrv  {
     }
 
 
-    public Pessoa getPorId(Integer id) {
-        return pessoaDao.getUm(id,Pessoa.class);
+    public Pessoa getPorId(Integer id) throws Exception {
+        return pessoaDao.getPorId(id);
     }
 
 
@@ -72,6 +72,7 @@ public class PessoaSrv  {
             dependenteDao.atualizar(dependente);
         }
     }
+
 
 
     public List<Dependente> dependentesPorPessoa(Pessoa pessoa){

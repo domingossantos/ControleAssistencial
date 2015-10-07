@@ -1,5 +1,6 @@
 package br.com.acp.beans.pessoa;
 
+import br.com.acp.beans.common.PaginaBean;
 import br.com.acp.model.Dependente;
 import br.com.acp.model.Pessoa;
 import br.com.acp.services.PessoaSrv;
@@ -17,7 +18,7 @@ import java.util.List;
 @ManagedBean
 @ViewScoped
 @URLMapping(id = "dependenteGrid", pattern = "/dependente/lista/#{pessoaId : dependenteGridBean.pessoaId }", viewId = "/pages/pessoa/dependente_grid.jsf")
-public class DependenteGridBean {
+public class DependenteGridBean extends PaginaBean {
 
     @Inject
     private PessoaSrv pessoaSrv;
@@ -30,8 +31,12 @@ public class DependenteGridBean {
 
     @URLAction(mappingId = "dependenteGrid", onPostback = false)
     public void init(){
-        pessoa = pessoaSrv.getPorId(pessoaId);
-        dependentes = pessoaSrv.dependentesPorPessoa(pessoa);
+        try {
+            pessoa = pessoaSrv.getPorId(pessoaId);
+            dependentes = pessoaSrv.dependentesPorPessoa(pessoa);
+        } catch (Exception ex){
+            addWarn(ex.getMessage());
+        }
     }
 
     public Integer getPessoaId() {

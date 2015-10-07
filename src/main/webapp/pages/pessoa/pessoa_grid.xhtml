@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
         >
 
 <ui:composition template="../../WEB-INF/template.xhtml">
@@ -16,34 +16,35 @@
             <div class="col-md-8"><h:link outcome="pretty:pessoaNova" value="Novo Registro" styleClass="btn btn-success"/></div>
         </div>
         <div>
-            <h:dataTable value="#{pessoaGridBean.pessoas}" var="pessoa" styleClass="table table-striped">
-                <h:column>
-                    <f:facet name="header">Nome</f:facet>
-                    #{pessoa.nome}
-                </h:column>
+            <p:dataTable value="#{pessoaGridBean.pessoas}" var="pessoa" styleClass="table table-striped" emptyMessage="Nenhum Registro Encontrado">
 
-                <h:column>
+                <p:column>
+                    <f:facet name="header">Nome</f:facet>
+                    <h:outputText value="#{pessoa.nome}" />
+                </p:column>
+
+                <p:column>
                     <f:facet name="header">Data Nasc</f:facet>
                     <h:outputText value="#{pessoa.dataNascimento}">
                         <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"   />
                     </h:outputText>
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column>
                     <f:facet name="header">CPF</f:facet>
-                    #{pessoa.cpf}
-                </h:column>
+                    <h:outputText value="#{pessoa.cpf}" />
+                </p:column>
 
-                <h:column>
+                <p:column>
                     <f:facet name="header">#</f:facet>
-                    <h:link outcome="pretty:pessoaEditar" value="Editar" styleClass="btn btn-default">
+                    <h:link outcome="pretty:pessoaEditar" value="Editar" styleClass="btn btn-sm btn-default">
                         <f:param name="id" value="#{pessoa.id}"/>
                     </h:link>
                     &nbsp;
-                    <h:link outcome="pretty:dependenteGrid" value="Dependentes" styleClass="btn btn-default">
+                    <h:link outcome="pretty:dependenteGrid" value="Dependentes" styleClass="btn btn-sm btn-default">
                         <f:param name="pessoaId" value="#{pessoa.id}"/>
                     </h:link>
-                </h:column>
-            </h:dataTable>
+                </p:column>
+            </p:dataTable>
         </div>
     </ui:define>
 

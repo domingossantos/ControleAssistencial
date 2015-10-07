@@ -33,22 +33,26 @@ public class Escolaridade {
     }
 
     @Override
+    public String toString() {
+        return "Escolaridade{" +
+                "id=" + id +
+                ", descricao='" + descricao + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         Escolaridade that = (Escolaridade) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (descricao != null ? !descricao.equals(that.descricao) : that.descricao != null) return false;
+        return !(id != null ? !id.equals(that.id) : that.id != null);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
-        return result;
+        return id != null ? id.hashCode() : 0;
     }
 }
