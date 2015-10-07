@@ -11,12 +11,18 @@
 
     <ui:define name="content">
 
-        <div class="row">
-            <div class="col-md-4">Cadastro de Pessoas</div>
+        <div class="row well-sm">
+            <div class="col-md-4"><h4>Pessoas</h4></div>
             <div class="col-md-8"><h:link outcome="pretty:pessoaNova" value="Novo Registro" styleClass="btn btn-success"/></div>
         </div>
         <div>
-            <p:dataTable value="#{pessoaGridBean.pessoas}" var="pessoa" styleClass="table table-striped" emptyMessage="Nenhum Registro Encontrado">
+            <p:dataTable value="#{pessoaGridBean.pessoas}" var="pessoa"
+                         styleClass="table table-striped" emptyMessage="Nenhum Registro Encontrado"
+                         rows="10"
+                         paginatorPosition="bottom"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
 
                 <p:column>
                     <f:facet name="header">Nome</f:facet>

@@ -9,7 +9,35 @@
 <ui:composition template="../WEB-INF/template.xhtml">
 
     <ui:define name="content">
+        <div class="well-lg well">
+            <div><h1>Sistema de Controle Assistencial</h1>&nbsp;<h5>Versão 2.0</h5> </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Novos Menbros</h3>
+                <ui:repeat value="#{loginBean.pessoas}" var="pessoa">
+                    <div>#{pessoa.nome}</div>
+                </ui:repeat>
+            </div>
+            <div class="col-md-6">
+                <h3>Próximos Eventos</h3>
+                <ui:repeat value="#{loginBean.eventos}" var="evento">
+                    <div>
+                        <h4>#{evento.tipoEventoId.descricao}</h4>
+                        <div><h:outputText value="#{evento.dataEvento}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                        </div>
+                        <h:outputText value="#{evento.observacao}"/>
+                        <div><h:link value="Inscrever" outcome="pretty:inscricao">
+                                <f:param id="eventoId" value="#{evento.id}"/>
+                            </h:link>
+                        </div>
+                    </div>
 
+                </ui:repeat>
+            </div>
+        </div>
     </ui:define>
 
 </ui:composition>

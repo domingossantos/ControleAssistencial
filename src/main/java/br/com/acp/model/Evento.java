@@ -17,6 +17,14 @@ public class Evento {
     private String observacao;
     private TipoEvento tipoEventoId;
 
+    public Evento(Integer id, String observacao) {
+        this.id = id;
+        this.observacao = observacao;
+    }
+
+    public Evento() {
+    }
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "evento_id_seq")

@@ -26,6 +26,14 @@ public class Pessoa {
     private Date dataCadastro;
     private Escolaridade escolaridadeId;
 
+    public Pessoa(Integer id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
+    public Pessoa() {
+    }
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_id_seq")

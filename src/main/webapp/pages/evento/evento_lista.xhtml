@@ -10,61 +10,64 @@
 <ui:composition template="../../WEB-INF/template.xhtml">
 
     <ui:define name="content">
+        <div class="well-sm row">
+            <div class="col-md-4"><h4>Lista de Eventos</h4></div>
+            <div class="col-md-8"><h:link outcome="pretty:eventoid" value="Novo Evento" styleClass="btn btn-success" /> </div>
+        </div>
+        <div>
+            <p:dataTable id="tblEvento" value="#{listaEventoBean.eventos}" var="evento" emptyMessage="Nenhum Registro Encontrado" >
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputText value="Data" />
+                    </f:facet>
+                    <h:outputText value="#{evento.dataEvento}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
 
-        <p:fieldset id="field1" legend="Lista de Eventos">
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputText value="Hora" />
+                    </f:facet>
+                    <h:outputText value="#{evento.horaEvento}">
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                </p:column>
 
-        <p:dataTable id="tblEvento" value="#{listaEventoBean.eventos}" var="evento" emptyMessage="Nenhum Registro Encontrado" >
-            <p:column >
-                <f:facet name="header">
-                    <h:outputText value="Data" />
-                </f:facet>
-                <h:outputText value="#{evento.dataEvento}">
-                    <f:convertDateTime pattern="dd/MM/yyyy" />
-                </h:outputText>
-            </p:column>
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputText value="Duração" />
+                    </f:facet>
+                    <h:outputText value="#{evento.duracao}">
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                </p:column>
 
-            <p:column >
-                <f:facet name="header">
-                    <h:outputText value="Hora" />
-                </f:facet>
-                <h:outputText value="#{evento.horaEvento}">
-                    <f:convertDateTime pattern="HH:mm" />
-                </h:outputText>
-            </p:column>
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputText value="Tipo de evento" />
+                    </f:facet>
+                    <h:outputText value="#{evento.tipoEventoId.descricao}"/>
+                </p:column>
 
-            <p:column >
-                <f:facet name="header">
-                    <h:outputText value="Duração" />
-                </f:facet>
-                <h:outputText value="#{evento.duracao}">
-                    <f:convertDateTime pattern="HH:mm" />
-                </h:outputText>
-            </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Opções" />
+                    </f:facet>
 
-            <p:column >
-                <f:facet name="header">
-                    <h:outputText value="Tipo de evento" />
-                </f:facet>
-                <h:outputText value="#{evento.tipoEventoId.descricao}"/>
-            </p:column>
+                    <h:link outcome="pretty:editarEvento" value="Editar">
+                        <f:param name="id" value="#{evento.id}"/>
+                    </h:link>
 
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="Opções" />
-                </f:facet>
-
-                <h:link outcome="pretty:editarEvento" value="Editar">
-                    <f:param name="id" value="#{evento.id}"/>
-                </h:link>
-
-                &nbsp;&nbsp;
-                <p:commandLink value="Excluir" action="#{listaEventoBean.excluir(evento)}" update=":formContent tblEvento"
-                               onclick="if (!confirm(' deseja mesmo excluir? '))
+                    &nbsp;&nbsp;
+                    <p:commandLink value="Excluir" action="#{listaEventoBean.excluir(evento)}" update=":formContent tblEvento"
+                                   onclick="if (!confirm(' deseja mesmo excluir? '))
                                              return false;" />
-            </p:column>
+                </p:column>
 
-        </p:dataTable>
-        </p:fieldset>
+            </p:dataTable>
+        </div>
+
     </ui:define>
 
 </ui:composition>

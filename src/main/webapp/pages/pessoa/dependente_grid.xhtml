@@ -11,8 +11,8 @@
 
     <ui:define name="content">
 
-        <div class="row">
-            <div class="col-md-4">Dependentes de <h:outputText value="#{dependenteGridBean.pessoa.nome}"/> </div>
+        <div class="row well-sm">
+            <div class="col-md-4"><h4>Dependentes de <h:outputText value="#{dependenteGridBean.pessoa.nome}"/></h4>  </div>
             <div class="col-md-8">
                 <h:link outcome="pretty:dependenteNovo" value="Novo Registro" styleClass="btn btn-success">
                     <f:param name="pessoaId" value="#{dependenteGridBean.pessoa.id}"/>

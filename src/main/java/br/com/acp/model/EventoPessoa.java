@@ -3,6 +3,7 @@ package br.com.acp.model;
 
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by domingossantos on 10/09/15.
@@ -14,8 +15,19 @@ public class EventoPessoa {
     private Integer id;
     private Pessoa pessoaId;
     private Evento eventoId;
-    private Calendar dataInscricao;
+    private Date dataInscricao;
     private String participacao;
+
+    public EventoPessoa(Integer id, Pessoa pessoaId, Evento eventoId, Date dataInscricao, String participacao) {
+        this.id = id;
+        this.pessoaId = pessoaId;
+        this.eventoId = eventoId;
+        this.dataInscricao = dataInscricao;
+        this.participacao = participacao;
+    }
+
+    public EventoPessoa() {
+    }
 
     @Id
     @Column(name = "id")
@@ -29,7 +41,7 @@ public class EventoPessoa {
     }
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pessoa_id")
     public Pessoa getPessoaId() {
         return pessoaId;
@@ -39,7 +51,7 @@ public class EventoPessoa {
         this.pessoaId = pessoaId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "evento_id")
     public Evento getEventoId() {
         return eventoId;
@@ -51,11 +63,11 @@ public class EventoPessoa {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "data_inscricao")
-    public Calendar getDataInscricao() {
+    public Date getDataInscricao() {
         return dataInscricao;
     }
 
-    public void setDataInscricao(Calendar dataInscricao) {
+    public void setDataInscricao(Date dataInscricao) {
         this.dataInscricao = dataInscricao;
     }
 

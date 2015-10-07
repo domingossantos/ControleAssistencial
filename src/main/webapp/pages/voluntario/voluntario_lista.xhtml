@@ -11,7 +11,14 @@
 
     <ui:define name="content">
 
-        <p:fieldset id="field1" legend="Lista de Voluntários">
+        <div class="row well-sm">
+            <div class="col-md-4"><h4>Voluntários</h4> </div>
+            <div class="col-md-8">
+                <h:link outcome="pretty:voluntarioform" value="Novo Voluntário" styleClass="btn btn-success"/>
+
+            </div>
+        </div>
+        <div>
 
         <p:dataTable id="tblVoluntario" value="#{listaVoluntarioBean.voluntarios}" var="voluntario" emptyMessage="Nenhum Registro Encontrado" >
             <p:column >
@@ -44,7 +51,7 @@
             </p:column>
 
         </p:dataTable>
-        </p:fieldset>
+        </div>
     </ui:define>
 
 </ui:composition>
