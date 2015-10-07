@@ -34,7 +34,7 @@
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Controle Assistencial</a>
+                    <a class="navbar-brand" href="#index.html">Controle Assistencial</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -43,6 +43,13 @@
                             <ul class="dropdown-menu">
                                 <li><h:link outcome="pretty:eventoid" value="Cadastrar Eventos"/></li>
                                 <li><h:link outcome="pretty:listaeventoid" value="Lista de Eventos"/></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Voluntário <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><h:link outcome="pretty:voluntarioform" value="Cadastrar Voluntário"/></li>
+                                <li><h:link outcome="pretty:listarVoluntario" value="Lista de Voluntários"/></li>
                             </ul>
                         </li>
                         <li><h:link outcome="pretty:pessoaGrid" value="Cadastro de Pessoas"/></li>
@@ -54,7 +61,6 @@
                                 <li><a href="#">Escolaridade</a></li>
                                 <li><h:link outcome="pretty:tipoeventoid" value="Tipo de Evento"/></li>
                                 <li><a href="#">Tipo Visita</a></li>
-                                <li><a href="#">Voluntário</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">Usuarios</a></li>
 
