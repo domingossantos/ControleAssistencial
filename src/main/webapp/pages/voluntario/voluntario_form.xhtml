@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../../WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+
+            <p:fieldset id="field1" legend="Cadastrar Voluntário">
+            <p:fieldset id="field2">
+                <h:panelGrid columns="2" cellspacing="20">
+                    <p:outputLabel for="nomeid" value="Nome : " />
+                    <h:panelGrid style="margin-bottom: 5%">
+                    <p:inputText id="nomeid"
+                                 value="#{voluntarioBean.voluntario.nome}"
+                                 required="true" requiredMessage="Campo Obrigatório" style="width: 150%"/>
+                    </h:panelGrid>
+
+                    <p:outputLabel for="funcaoid" value="Função: " />
+                <h:panelGrid style="margin-bottom: 5%">
+                    <p:inputText id="funcaoid" value="#{voluntarioBean.voluntario.funcao}"
+                                 required="true"
+                                 requiredMessage="Campo Obrigatório" style="width: 150%"/>
+                </h:panelGrid>
+                </h:panelGrid>
+                <p:commandButton value="Salvar"  ajax="false" action="#{voluntarioBean.salvar()}"/>
+            </p:fieldset>
+            </p:fieldset>
+
+    </ui:define>
+
+</ui:composition>
+</html>

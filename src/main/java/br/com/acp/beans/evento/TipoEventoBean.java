@@ -52,11 +52,8 @@ public class TipoEventoBean extends PaginaBean{
     }
 
     public void excluir(TipoEvento tipoevento){
-//        tipoEvento = tipoevento;
         tipoEventoSrv.excluir(tipoevento.getId());
         lista = tipoEventoSrv.listar();
-//        tipoEvento = null;
-//        init();
         addInfo("Excluído com sucesso!");
     }
 

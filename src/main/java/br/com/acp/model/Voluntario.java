@@ -2,6 +2,7 @@ package br.com.acp.model;
 
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by domingossantos on 10/09/15.
@@ -11,7 +12,7 @@ import java.util.Calendar;
 public class Voluntario {
     private String funcao;
     private String nome;
-    private Calendar dataCadastro;
+    private Date dataCadastro;
     private Integer id;
 
     @Id
@@ -47,11 +48,11 @@ public class Voluntario {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "data_cadastro")
-    public Calendar getDataCadastro() {
+    public Date getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(Calendar dataCadastro) {
+    public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 
